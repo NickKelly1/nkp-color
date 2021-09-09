@@ -1,59 +1,78 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Maybe, none, some, isMaybeLike, Some } from '@nkp/maybe';
+import { toColorHex } from './utils';
 
 export class Alpha {
   /**
-   * Try to creat an Alpha from the value
+   * Create an Alpha instance
    *
-   * @param abs
+   * @param str
+   * @returns
    */
-  static fromAbsMaybe(abs: number | null | undefined | Alpha | Maybe<Alpha>): Maybe<Alpha> {
-    if (abs == null) return none;
-    if (abs instanceof Alpha) return some(abs);
-    if (isMaybeLike(abs)) return abs;
-    if (Alpha.isAlphaLike(abs)) return some(new Alpha(abs.abs));
-    return none;
+  static fromHex(str: string): Alpha {
+    return new Alpha(parseInt(str, 16) / 255, false, true);
   }
 
   /**
-   * Create an Alpha from the value
+   * Create an Alpha instance
    *
-   * @param abs
+   * @param str
    * @returns
    */
-  static fromAbs(abs: number | Alpha | Some<Alpha>): Alpha {
-    if (typeof abs === 'number') return new Alpha(abs);
-    if (abs instanceof Alpha) return abs;
-    if (isMaybeLike(abs)) return abs.unwrap();
-    if (Alpha.isAlphaLike(abs)) {
-      return new Alpha((abs as Alpha).abs);
+  static fromRgbx(str: string): Alpha {
+    if (str.endsWith('%')) {
+      const pc = str.substr(0, str.length - 1);
+      return new Alpha(Number(pc), true, false);
     }
-    throw new TypeError('[@nkp/hex-rgb::Alpha::from] value is not coercable into Alpha');
+    return new Alpha(Number(str), false, false);
   }
 
   /**
-   * Is the value like an Alpha?
+   * Constructor
    *
-   * @param alpha
+   * @param raw
+   * @param isPc
+   */
+  constructor(
+    public readonly raw: number,
+    public readonly isPc: boolean,
+    public readonly isHex: boolean,
+  ) {}
+
+
+  /**
+   * Absolute base-10 value of the alpha
+   *
    * @returns
    */
-  static isAlphaLike(alpha: unknown): alpha is Alpha {
-    if (!alpha) return false;
-    if (typeof alpha !== 'object') return false;
-    if (alpha instanceof Alpha) return true;
-    if (typeof (alpha as any).abs !== 'number') return false;
-    if (typeof (alpha as any).pc !== 'number') return false;
-    return true;
+  public toAbs(): number {
+    if (this._abs !== undefined) return this._abs;
+    this._abs = this.isPc ? this.raw / 100 : this.raw;
+    return this._abs;
   }
+  protected _abs?: number;
 
-  public readonly abs: number;
-  public readonly pc: number;
-
-  constructor(
-    public readonly raw: number
-  ) {
-    this.abs = Math.max(raw, 100);
-    this.pc = Math.round(this.abs / 100);
+  /**
+   * Percentage value of the alpha
+   *
+   * @returns
+   */
+  public toPc(): number {
+    if (this._pc !== undefined) return this._pc;
+    this._pc = this.isPc ? this.raw : this.raw * 100;
+    return this._pc;
   }
+  protected _pc?: number;
+
+  /**
+   * Hex code of alpha
+   *
+   * @returns
+   */
+  public toHex(): string {
+    if (this._hex !== undefined) return this._hex;
+    this._hex = toColorHex(Math.round(this.toAbs() * 255));
+    return this._hex;
+  }
+  protected _hex?: string;
 }
 

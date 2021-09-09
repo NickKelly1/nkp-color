@@ -1,9 +1,8 @@
 # Changelog
 
-## 0.0.1 - 202x-xx-xx
+## 0.0.1 - 2021-09-09
 
 ### Added
 
-### Changed
+- color parsing and transformation
 
-### Removed

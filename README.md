@@ -19,39 +19,15 @@ Comes with:
 
 ## Getting started
 
-1. Clone the repository
-    - `git clone git@github.com:NickKelly1/nkp-template.git`
-    - (optional): use GitHub's `template` feature.
-2. Install dependencies and run tests
-    1. If using nvm, run `nvm use` to set the NodeJS version
-    2. run `npm install`
-    3. run `npm test`
-3. Find and replace placeholders in the project
-    1. NPM package. Converts hexadecimal colours to RGB colours.
-    2. @nkp/hex-to-rgb
-    3. https://github.com/nickkelly1/nkp-hex-to-rgb
-    4. nickkelly1
-    5. nkp-hex-to-rgb
-4. Remove stubs and reset the repos state
-    1. Remove the contents of `src/index.ts`
-    2. set the testEnvironment in `jest.config.ts
-    3. Remove `src/examples`
-5. Add an NPM_TOKEN to the repository for CI
-    1. Using npmjs, generate a CI token
-    2. Add the token to this GitHub repositories secrets as "NPM_TOKEN"
-6. Set up the README.MD
-
-## @nkp/hex-to-rgb
+## @nkp/colors
 
 Fill in the following:
 
-```txt
-![npm version](https://badge.fury.io/js/%40nkp%2Fhex-to-rgb.svg)
-[![Node.js Package](https://github.com/nickkelly1/hex-to-rgb/actions/workflows/release.yml/badge.svg)](https://github.com/nickkelly1/nkp-hex-to-rgb/actions/workflows/release.yml)
-![Known Vulnerabilities](https://snyk.io/test/github/nickkelly1/nkp-hex-to-rgb/badge.svg)
-```
+![npm version](https://badge.fury.io/js/%40nkp%2Fcolors.svg)
+[![Node.js Package](https://github.com/nickkelly1/colors/actions/workflows/release.yml/badge.svg)](https://github.com/nickkelly1/colors/actions/workflows/release.yml)
+![Known Vulnerabilities](https://snyk.io/test/github/nickkelly1/colors/badge.svg)
 
----DESCRIPTION-TEXT---
+NPM package. Parses RGB and hex colors and can convert between them.
 
 ## Table of contents
 
@@ -60,28 +36,79 @@ Fill in the following:
   - [yarn](#yarn)
   - [Exports](#exports)
 - [Usage](#usage)
+  - [Parsing](#parsing)
+  - [Transformation](#transformation)
 
 ## Installation
 
 ### NPM
 
 ```sh
-npm install @nkp/hex-to-rgb
+npm install @nkp/colors
 ```
 
 ### Yarn
 
 ```sh
-yarn add @nkp/hex-to-rgb
+yarn add @nkp/colors
 ```
 
 ### Exports
 
-`@nkp/hex-to-rgb` targets CommonJS and ES modules. To utilise ES modules consider using a bundler like `webpack` or `rollup`.
+`@nkp/colors` targets CommonJS and ES modules. To utilise ES modules consider using a bundler like `webpack` or `rollup`.
 
 ## Usage
 
----USAGE-TEXT---
+### Parsing
+
+`@nkp/colours` can parse text and return all the matched colours with RGBA values and details on their indeces, rgb/a separators (commas or spaces), and rgba absolute or percentage sign.
+
+```ts
+import { parseText, ParsedText } from '@nkp/colors';
+
+const parsed: ParsedText = parseText(`
+this #aabbcc is text rgba(25, 125, 225, 50%) with
+colors rgb(255 155 55) strewn throughout #abc.
+`);
+
+console.table(parsed.matches.map((match) => ({
+  original: match.original,
+  start: match.start,
+  end: match.end,
+  red: match.color.red,
+  green: match.color.green,
+  blue: match.color.blue,
+  alpha: match.color.alpha?.toAbs(),
+  hex: match.color.toHex(),
+})));
+
+┌─────────┬───────────────────────────┬───────┬─────┬─────┬───────┬──────┬───────────┬─────────────┐
+│ (index) │         original          │ start │ end │ red │ green │ blue │   alpha   │     hex     │
+├─────────┼───────────────────────────┼───────┼─────┼─────┼───────┼──────┼───────────┼─────────────┤
+│    0    │         '#aabbcc'         │  10   │ 17  │ 170 │  187  │ 204  │ undefined │  '#aabbcc'  │
+│    1    │ 'rgba(25, 125, 225, 50%)' │  26   │ 49  │ 25  │  125  │ 225  │    0.5    │ '#197de180' │
+│    2    │     'rgb(255 155 55)'     │  66   │ 81  │ 255 │  155  │  55  │ undefined │  '#ff9b37'  │
+│    3    │          '#abc'           │  100  │ 104 │ 170 │  187  │ 204  │ undefined │  '#aabbcc'  │
+└─────────┴───────────────────────────┴───────┴─────┴─────┴───────┴──────┴───────────┴─────────────┘
+```
+
+### Transfomation
+
+After parsing text, `@nkp/colours` the caller can transform selected colours to other types of colour encoding.
+
+```ts
+import { parseText, ParsedText } from '@nkp/colors';
+
+const modified: string = parseText(`
+this #aabbcc is text rgba(25, 125, 225, 50%) with
+colors rgb(255 155 55) strewn throughout #abc.
+`).mapColors((match) => match.color.toRgbx());
+
+/**
+ * this rgb(170, 187, 204) is text rgba(25, 125, 225, 50%) with
+ * colors rgb(255 155 55) strewn throughout rgb(170, 187, 204).
+ */
+```
 
 ## Publishing
 

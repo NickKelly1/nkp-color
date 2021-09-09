@@ -1,21 +1,21 @@
 {
-  "name": "@nkp/hex-rgb",
+  "name": "@nkp/colors",
   "sideEffects": false,
-  "version": "0.0.1",
-  "description": "NPM package. Converts hexadecimal colours to RGB colours.",
+  "version": "1.0.0",
+  "description": "NPM package. Converts between hexadecimal RGB/A colors.",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "author": "Nick Kelly",
-  "homepage": "https://github.com/nickkelly1/nkp-hex-to-rgb#readme",
-  "readme": "https://github.com/nickkelly1/nkp-hex-to-rgb#readme",
+  "homepage": "https://github.com/nickkelly1/colors#readme",
+  "readme": "https://github.com/nickkelly1/colors#readme",
   "license": "Mozilla Public License Version 2.0",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/nickkelly1/nkp-hex-to-rgb"
+    "url": "https://github.com/nickkelly1/colors"
   },
   "bugs": {
-    "url": "https://github.com/nickkelly1/nkp-hex-to-rgb/issues"
+    "url": "https://github.com/nickkelly1/colors/issues"
   },
   "keywords": [
     "TypeScript",
@@ -32,7 +32,7 @@
     "upgrade": "npm-check --update"
   },
   "devDependencies": {
-    "@jest/types": "^27.1.0",
+    "@jest/types": "^27.1.1",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
@@ -41,7 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "eslint": "^7.31.0",
-    "jest": "^27.0.6",
+    "jest": "^27.1.1",
     "npm-check": "^5.9.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
@@ -50,9 +50,5 @@
     "ts-jest": "^27.0.4",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
-  },
-  "dependencies": {
-    "@nkp/iterable": "^0.0.41",
-    "@nkp/maybe": "^0.0.36"
   }
 }

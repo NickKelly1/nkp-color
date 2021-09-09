@@ -1,5 +1,5 @@
 {
-  "window.title": "@nkp/hex-to-rgb",
+  "window.title": "@nkp/colors",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
