@@ -2,7 +2,7 @@
 
 Fill in the following:
 
-![npm version](https://badge.fury.io/js/%40nkp%2Fcolors.svg)
+[![npm version](https://badge.fury.io/js/%40nkp%2Fcolors.svg)](https://www.npmjs.com/package/@nkp/colors)
 [![Node.js Package](https://github.com/nickkelly1/nkp-colors/actions/workflows/release.yml/badge.svg)](https://github.com/nickkelly1/nkp-colors/actions/workflows/release.yml)
 ![Known Vulnerabilities](https://snyk.io/test/github/nickkelly1/nkp-colors/badge.svg)
 
@@ -71,7 +71,7 @@ console.table(parsed.matches.map((match) => ({
 └─────────┴───────────────────────────┴───────┴─────┴─────┴───────┴──────┴───────────┴─────────────┘
 ```
 
-### Transfomation
+### Transformation
 
 After parsing text, `@nkp/colours` the caller can transform selected colours to other types of colour encoding.
 
@@ -81,11 +81,11 @@ import { parseText, ParsedText } from '@nkp/colors';
 const modified: string = parseText(`
 this #aabbcc is text rgba(25, 125, 225, 50%) with
 colors rgb(255 155 55) strewn throughout #abc.
-`).mapColors((match) => match.color.toRgbx());
+`).mapColors((match) => match.color.toRgbx({ useCommas: true, }));
 
 /**
  * this rgb(170, 187, 204) is text rgba(25, 125, 225, 50%) with
- * colors rgb(255 155 55) strewn throughout rgb(170, 187, 204).
+ * colors rgb(255, 155, 55) strewn throughout rgb(170, 187, 204).
  */
 ```
 
