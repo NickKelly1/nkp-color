@@ -3,8 +3,8 @@
 Fill in the following:
 
 ![npm version](https://badge.fury.io/js/%40nkp%2Fcolors.svg)
-[![Node.js Package](https://github.com/nickkelly1/colors/actions/workflows/release.yml/badge.svg)](https://github.com/nickkelly1/colors/actions/workflows/release.yml)
-![Known Vulnerabilities](https://snyk.io/test/github/nickkelly1/colors/badge.svg)
+[![Node.js Package](https://github.com/nickkelly1/nkp-colors/actions/workflows/release.yml/badge.svg)](https://github.com/nickkelly1/nkp-colors/actions/workflows/release.yml)
+![Known Vulnerabilities](https://snyk.io/test/github/nickkelly1/nkp-colors/badge.svg)
 
 NPM package. Parses RGB and hex colors and can convert between them.
 
