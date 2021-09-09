@@ -1,25 +1,4 @@
-# Nkp package template
-
-Template for @nkp/ npm packages.
-
-Comes with:
-
-1. Language: TypeScript & JavaScript
-2. Linting: Eslint
-3. Testing: Jest
-    - Support TypeScript test files
-    - Support e2e and unit tests
-    - Easy to configure for DOM testing
-4. Building: Rollup
-    1. Builds commonjs
-    2. Builds ES Modules (targets package.json#module)
-        - Package consumers using build tools such as `rollup` and `webpack` target package.json#module, the ES Module export of the package, for tree shaking. Tree shaking generates smaller packages and reduces build times.
-5. CI: GitHub actions
-    - Builds, tests and publishes to `npm` when a new release is created on GitHub.
-
-## Getting started
-
-## @nkp/colors
+# @nkp/colors
 
 Fill in the following:
 
