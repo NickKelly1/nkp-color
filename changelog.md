@@ -4,5 +4,4 @@
 
 ### Added
 
-- color parsing and transformation
-
+- Color parsing and transformation
