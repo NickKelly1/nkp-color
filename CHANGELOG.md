@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.5 - 2021-09-09
+
+### Changed
+
+- Updated `toRgbaRawCommasAbs`
+
 ## 1.0.4 - 2021-09-09
 
 ### Changed

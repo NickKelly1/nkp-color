@@ -346,7 +346,7 @@ export class Color {
    * @returns
    */
   toRgbaRawCommasAbs(): string {
-    return `${this.red}, ${this.green}, ${this.blue}, ${this.alpha?.toAbs ?? 1}`;
+    return `${this.red}, ${this.green}, ${this.blue}, ${this.alpha?.toAbs() ?? 1}`;
   }
 
   /**
