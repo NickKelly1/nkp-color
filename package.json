@@ -1,7 +1,7 @@
 {
   "name": "@nkp/color",
   "sideEffects": false,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NPM package. Converts between hexadecimal RGB/A colors.",
   "main": "cjs/index.js",
   "module": "es/index.js",
