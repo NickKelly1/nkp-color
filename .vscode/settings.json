@@ -1,5 +1,5 @@
 {
-  "window.title": "@nkp/colors",
+  "window.title": "@nkp/color",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },

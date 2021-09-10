@@ -1,12 +1,28 @@
-# @nkp/colors
+# @nkp/color
 
-Fill in the following:
+[![npm version](https://badge.fury.io/js/%40nkp%2Fcolor.svg)](https://www.npmjs.com/package/@nkp/color)
+[![Node.js Package](https://github.com/nickkelly1/nkp-color/actions/workflows/release.yml/badge.svg)](https://github.com/nickkelly1/nkp-color/actions/workflows/release.yml)
+![Known Vulnerabilities](https://snyk.io/test/github/nickkelly1/nkp-color/badge.svg)
 
-[![npm version](https://badge.fury.io/js/%40nkp%2Fcolors.svg)](https://www.npmjs.com/package/@nkp/colors)
-[![Node.js Package](https://github.com/nickkelly1/nkp-colors/actions/workflows/release.yml/badge.svg)](https://github.com/nickkelly1/nkp-colors/actions/workflows/release.yml)
-![Known Vulnerabilities](https://snyk.io/test/github/nickkelly1/nkp-colors/badge.svg)
+NPM package to parse and transforms rgb, rgba and hex colors.
 
-NPM package. Parses RGB and hex colors and can convert between them.
+```ts
+import { parseText } from '@nkp/color';
+
+const text = `
+this #aabbcc is text rgba(25, 125, 225, 50%) with
+colors rgb(255 155 55) strewn throughout #abc.
+`;
+
+const modified: string = parseText(text).mapColors((match) => match
+  .color
+  .toRgbx({ useCommas: true, }));
+
+// text becomes
+//
+// this rgb(170, 187, 204) is text rgba(25, 125, 225, 50%) with
+// colors rgb(255, 155, 55) strewn throughout rgb(170, 187, 204).
+```
 
 ## Table of contents
 
@@ -23,27 +39,27 @@ NPM package. Parses RGB and hex colors and can convert between them.
 ### NPM
 
 ```sh
-npm install @nkp/colors
+npm install @nkp/color
 ```
 
 ### Yarn
 
 ```sh
-yarn add @nkp/colors
+yarn add @nkp/color
 ```
 
 ### Exports
 
-`@nkp/colors` targets CommonJS and ES modules. To utilise ES modules consider using a bundler like `webpack` or `rollup`.
+`@nkp/color` targets CommonJS and ES modules. To utilise ES modules consider using a bundler like `webpack` or `rollup`.
 
 ## Usage
 
 ### Parsing
 
-`@nkp/colours` can parse text and return all the matched colours with RGBA values and details on their indeces, rgb/a separators (commas or spaces), and rgba absolute or percentage sign.
+`@nkp/color` can parse text and return all the matched colors with RGBA values and details on their indeces, rgb/a separators (commas or spaces), and rgba absolute or percentage sign.
 
 ```ts
-import { parseText, ParsedText } from '@nkp/colors';
+import { parseText, ParsedText } from '@nkp/color';
 
 const parsed: ParsedText = parseText(`
 this #aabbcc is text rgba(25, 125, 225, 50%) with
@@ -73,10 +89,10 @@ console.table(parsed.matches.map((match) => ({
 
 ### Transformation
 
-After parsing text, `@nkp/colours` the caller can transform selected colours to other types of colour encoding.
+After parsing text, `@nkp/color` the caller can transform selected colors to other types of color encoding.
 
 ```ts
-import { parseText, ParsedText } from '@nkp/colors';
+import { parseText, ParsedText } from '@nkp/color';
 
 const modified: string = parseText(`
 this #aabbcc is text rgba(25, 125, 225, 50%) with
