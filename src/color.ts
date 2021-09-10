@@ -31,7 +31,7 @@ export class Color {
     red: number,
     green: number,
     blue: number,
-    alpha?: null | number | Alpha,
+    alpha?: null | number | string | Alpha,
     useCommas?: boolean,
     useCss?: boolean,
     useHex?: boolean,
@@ -69,7 +69,7 @@ export class Color {
     red: number,
     green: number,
     blue: number,
-    alpha?: null | number | Alpha,
+    alpha?: null | number | string | Alpha,
     useCommas = true,
     useCss = true,
     useHex = false,
@@ -79,9 +79,10 @@ export class Color {
     this.red = Math.max(Math.min(255, red), 0);
     this.green = Math.max(Math.min(255, green), 0);
     this.blue = Math.max(Math.min(255, blue), 0);
-    this.alpha =  typeof alpha === 'number'
-      ? new Alpha(alpha, false, false)
-      : (alpha ?? null);
+    this.alpha =
+      alpha instanceof Alpha ? alpha
+        : alpha != null ? Alpha.from(alpha)
+          : null;
     this.useCommas = useCommas;
     this.useCss = useCss;
     this.useHex = useHex;

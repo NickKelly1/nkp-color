@@ -1,3 +1,4 @@
+import { Alpha } from './alpha';
 import { MatchHexSurround, MatchRgbSeparator, MatchRgbSurround, MatchType } from './match';
 import { parseText } from './parse';
 
@@ -132,7 +133,7 @@ describe('parse', () => {
         expect(parsed.matches[0]!.color.toHexRed()).toEqual(_1_hex_red);
         expect(parsed.matches[0]!.color.toHexGreen()).toEqual(_1_hex_green);
         expect(parsed.matches[0]!.color.toHexBlue()).toEqual(_1_hex_blue);
-        expect(parsed.matches[0]!.color.alpha!.toAbs()).toEqual(_1_alpha_abs);
+        expect(parsed.matches[0]!.color.alpha!.toAbs()).toEqual(Alpha.normaliseAbs(_1_alpha_abs));
 
         expect(parsed.matches[1]!.original).toEqual(_2);
         expect(parsed.matches[1]!.type).toEqual(MatchType.Hex);
@@ -144,7 +145,7 @@ describe('parse', () => {
         expect(parsed.matches[1]!.color.toHexRed()).toEqual(_2_hex_red);
         expect(parsed.matches[1]!.color.toHexGreen()).toEqual(_2_hex_green);
         expect(parsed.matches[1]!.color.toHexBlue()).toEqual(_2_hex_blue);
-        expect(parsed.matches[1]!.color.alpha!.toAbs()).toEqual(_2_alpha_abs);
+        expect(parsed.matches[1]!.color.alpha!.toAbs()).toEqual(Alpha.normaliseAbs(_2_alpha_abs));
 
         expect(parsed.matches[2]!.original).toEqual(_3);
         expect(parsed.matches[2]!.type).toEqual(MatchType.Hex);
@@ -156,7 +157,7 @@ describe('parse', () => {
         expect(parsed.matches[2]!.color.toHexRed()).toEqual(_3_hex_red);
         expect(parsed.matches[2]!.color.toHexGreen()).toEqual(_3_hex_green);
         expect(parsed.matches[2]!.color.toHexBlue()).toEqual(_3_hex_blue);
-        expect(parsed.matches[2]!.color.alpha!.toAbs()).toEqual(_3_alpha_abs);
+        expect(parsed.matches[2]!.color.alpha!.toAbs()).toEqual(Alpha.normaliseAbs(_3_alpha_abs));
       });
     });
   });
@@ -278,7 +279,7 @@ describe('parse', () => {
         expect(parsed.matches[0]!.color.toHexRed()).toEqual(_1_hex_red.repeat(2));
         expect(parsed.matches[0]!.color.toHexGreen()).toEqual(_1_hex_green.repeat(2));
         expect(parsed.matches[0]!.color.toHexBlue()).toEqual(_1_hex_blue.repeat(2));
-        expect(parsed.matches[0]!.color.alpha!.toAbs()).toEqual(_1_alpha_abs);
+        expect(parsed.matches[0]!.color.alpha!.toAbs()).toEqual(Alpha.normaliseAbs(_1_alpha_abs));
 
         expect(parsed.matches[1]!.original).toEqual(_2);
         expect(parsed.matches[1]!.type).toEqual(MatchType.Hex);
@@ -291,7 +292,7 @@ describe('parse', () => {
         expect(parsed.matches[1]!.color.toHexRed()).toEqual(_2_hex_red.repeat(2));
         expect(parsed.matches[1]!.color.toHexGreen()).toEqual(_2_hex_green.repeat(2));
         expect(parsed.matches[1]!.color.toHexBlue()).toEqual(_2_hex_blue.repeat(2));
-        expect(parsed.matches[1]!.color.alpha!.toAbs()).toEqual(_2_alpha_abs);
+        expect(parsed.matches[1]!.color.alpha!.toAbs()).toEqual(Alpha.normaliseAbs(_2_alpha_abs));
 
         expect(parsed.matches[2]!.original).toEqual(_3);
         expect(parsed.matches[2]!.type).toEqual(MatchType.Hex);
@@ -304,7 +305,7 @@ describe('parse', () => {
         expect(parsed.matches[2]!.color.toHexRed()).toEqual(_3_hex_red.repeat(2));
         expect(parsed.matches[2]!.color.toHexGreen()).toEqual(_3_hex_green.repeat(2));
         expect(parsed.matches[2]!.color.toHexBlue()).toEqual(_3_hex_blue.repeat(2));
-        expect(parsed.matches[2]!.color.alpha!.toAbs()).toEqual(_3_alpha_abs);
+        expect(parsed.matches[2]!.color.alpha!.toAbs()).toEqual(Alpha.normaliseAbs(_3_alpha_abs));
       });
     });
   });

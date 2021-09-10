@@ -121,7 +121,7 @@ export function match(array: RegExpMatchArray): null | ColorMatch {
     type = MatchType.Rgbx;
     surround = MatchRgbSurround.Css;
     separator = MatchRgbSeparator.Commas;
-    const alpha = Alpha.fromRgbx(array[1 + REGEX_COLORS.rgba_commas_alpha]!);
+    const alpha = Alpha.fromRgba(array[1 + REGEX_COLORS.rgba_commas_alpha]!);
     rgba = Color.from({
       red: Number(array[1 + REGEX_COLORS.rgba_commas_red]!),
       green: Number(array[1 + REGEX_COLORS.rgba_commas_green]!),
@@ -130,7 +130,7 @@ export function match(array: RegExpMatchArray): null | ColorMatch {
       useCommas: true,
       useCss: true,
       useHex: false,
-      usePc: alpha.isPc,
+      usePc: alpha.isPc(),
       useHash: true,
     });
   }
@@ -139,7 +139,7 @@ export function match(array: RegExpMatchArray): null | ColorMatch {
     type = MatchType.Rgbx;
     surround = MatchRgbSurround.Css;
     separator = MatchRgbSeparator.Spaces;
-    const alpha = Alpha.fromRgbx(array[1 + REGEX_COLORS.rgba_spaces_alpha]!);
+    const alpha = Alpha.fromRgba(array[1 + REGEX_COLORS.rgba_spaces_alpha]!);
     rgba = Color.from({
       red: Number(array[1 + REGEX_COLORS.rgba_spaces_red]!),
       green: Number(array[1 + REGEX_COLORS.rgba_spaces_green]!),
@@ -148,7 +148,7 @@ export function match(array: RegExpMatchArray): null | ColorMatch {
       useCommas: false,
       useCss: true,
       useHex: false,
-      usePc: alpha.isPc,
+      usePc: alpha.isPc(),
       useHash: true,
     });
   }
@@ -191,7 +191,7 @@ export function match(array: RegExpMatchArray): null | ColorMatch {
     type = MatchType.Rgbx;
     surround = MatchRgbSurround.None;
     separator = MatchRgbSeparator.Commas;
-    const alpha = Alpha.fromRgbx(array[1 + REGEX_COLORS.rgba_numbers_commas_alpha]!);
+    const alpha = Alpha.fromRgba(array[1 + REGEX_COLORS.rgba_numbers_commas_alpha]!);
     rgba = Color.from({
       red: Number(array[1 + REGEX_COLORS.rgba_numbers_commas_red]!),
       green: Number(array[1 + REGEX_COLORS.rgba_numbers_commas_green]!),
@@ -200,7 +200,7 @@ export function match(array: RegExpMatchArray): null | ColorMatch {
       useCommas: true,
       useCss: false,
       useHex: false,
-      usePc: alpha.isPc,
+      usePc: alpha.isPc(),
       useHash: true,
     });
   }
@@ -209,7 +209,7 @@ export function match(array: RegExpMatchArray): null | ColorMatch {
     type = MatchType.Rgbx;
     surround = MatchRgbSurround.None;
     separator = MatchRgbSeparator.Spaces;
-    const alpha = Alpha.fromRgbx(array[1 + REGEX_COLORS.rgba_numbers_spaces_alpha]!);
+    const alpha = Alpha.fromRgba(array[1 + REGEX_COLORS.rgba_numbers_spaces_alpha]!);
     rgba = Color.from({
       red: Number(array[1 + REGEX_COLORS.rgba_numbers_spaces_red]!),
       green: Number(array[1 + REGEX_COLORS.rgba_numbers_spaces_green]!),
@@ -218,7 +218,7 @@ export function match(array: RegExpMatchArray): null | ColorMatch {
       useCommas: false,
       useCss: false,
       useHex: false,
-      usePc: alpha.isPc,
+      usePc: alpha.isPc(),
       useHash: true,
     });
   }

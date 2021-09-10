@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.6 - 2021-09-09
+
+### Changed
+
+- Fixed alpha
+
 ## 1.0.5 - 2021-09-09
 
 ### Changed
