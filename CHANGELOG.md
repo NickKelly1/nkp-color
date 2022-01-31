@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.6 - 2022-01-30
+
+### Changed
+
+- Devop: updated build, ci, tests
+
 ## 1.0.6 - 2021-09-09
 
 ### Changed

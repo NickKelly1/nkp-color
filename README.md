@@ -2,9 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/%40nkp%2Fcolor.svg)](https://www.npmjs.com/package/@nkp/color)
 [![Node.js Package](https://github.com/nickkelly1/nkp-color/actions/workflows/release.yml/badge.svg)](https://github.com/nickkelly1/nkp-color/actions/workflows/release.yml)
-![Known Vulnerabilities](https://snyk.io/test/github/nickkelly1/nkp-color/badge.svg)
+[![Known Vulnerabilities](https://snyk.io/test/github/nickkelly1/nkp-color/badge.svg)](https://snyk.io/test/github/nickkelly1/nkp-color)
 
-NPM package to parse and transforms rgb, rgba and hex colors.
+Zero dependency utilities to parse and transforms rgb, rgba, and hex colors.
 
 ```ts
 import { parseText } from '@nkp/color';
@@ -26,31 +26,40 @@ const modified: string = parseText(text).mapColors((match) => match
 
 ## Table of contents
 
+- [Exports](#exports)
 - [Installation](#installation)
   - [npm](#npm)
   - [yarn](#yarn)
-  - [Exports](#exports)
+  - [pnpm](#pnpm)
 - [Usage](#usage)
   - [Parsing](#parsing)
   - [Transformation](#transformation)
+- [Publishing](#publishing)
+
+## Exports
+
+`@nkp/color` exports both CommonJS and ES modules.
+
 
 ## Installation
 
-### NPM
+### npm
 
 ```sh
 npm install @nkp/color
 ```
 
-### Yarn
+### yarn
 
 ```sh
 yarn add @nkp/color
 ```
 
-### Exports
+### pnpm
 
-`@nkp/color` targets CommonJS and ES modules. To utilise ES modules consider using a bundler like `webpack` or `rollup`.
+```sh
+pnpm install @nkp/color
+```
 
 ## Usage
 
