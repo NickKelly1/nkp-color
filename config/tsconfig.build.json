@@ -17,6 +17,6 @@
     "sourceMap": false,
     "declaration": false,
     "declarationMap": false,
-    "removeComments": true
+    "removeComments": true,
   }
 }

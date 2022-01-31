@@ -6,6 +6,6 @@
     "noEmit": false,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "removeComments": false
+    "removeComments": false,
   }
 }
