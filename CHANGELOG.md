@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.8 - 2022-01-30
+
+### Changed
+
+- License: MIT
+- Removed comments from cjs & esm exports
+
 ## 1.0.7 - 2022-01-30
 
 ### Changed
